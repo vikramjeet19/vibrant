@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Container, Table,Button } from 'react-bootstrap';
 import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -19,7 +19,8 @@ class List extends React.Component {
             .catch(err => console.log(err))
     }
     clickedHandler=(id)=>{
-        console.log('clicked')
+        console.log(id)
+        this.props.history.push('/edit')
     }
 
     render() {
@@ -37,11 +38,13 @@ class List extends React.Component {
                     </thead>
                     <tbody>
                         {console.log(this.props.userData.data)}
-                        {this.props.userData.data.map(key => (
-                            <tr  key={key.id} onClick={this.clickedHandler(key.id)}> 
-                                <td>{key.first_name}</td>
-                                <td>{key.last_name}</td>
-                                <td>{key.email}</td>
+                        {this.props.userData.data.map(mapper => (
+                            <tr  key={mapper.id}> 
+                                <td>{mapper.first_name}</td>
+                                <td>{mapper.last_name}</td>
+                                <td>{mapper.email}</td>
+                                <td></td>
+                                <td><Button variant="light" onClick={()=>this.clickedHandler(mapper.id)}>edit</Button></td>
                             </tr>
                         ))}
                     </tbody>
