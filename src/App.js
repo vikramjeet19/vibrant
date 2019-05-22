@@ -7,9 +7,10 @@ function App() {
   return (
     <div >
        <Header/>
-       <List/>
+       
        <Switch>
          <Route  exact path='/edit' component={Edit}/>
+         <Route exact path='/' component={List} />
        </Switch>
     </div>
   );

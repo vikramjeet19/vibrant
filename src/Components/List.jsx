@@ -19,8 +19,10 @@ class List extends React.Component {
             .catch(err => console.log(err))
     }
     clickedHandler=(id)=>{
-        console.log(id)
-        this.props.history.push('/edit')
+        this.props.history.push({
+            pathname:'/edit',
+            updateId:id
+        })
     }
 
     render() {
