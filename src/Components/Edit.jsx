@@ -2,19 +2,16 @@ import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
+import {connect} from 'react-redux';
 class Edit extends React.Component {
-    
+
     componentDidMount(){
-        axios.post('')
+        axios.put('https://reqres.in/api/users/2',)
         .then(resolve=>console.log(resolve))
         .catch(err=>console.log(err))
     }
     render() {
-       
-       
-
         return (<Container>
-            
                 <Form>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>First Name</Form.Label>
@@ -38,4 +35,13 @@ class Edit extends React.Component {
         </Container>)
     }
 }
-export default withRouter(Edit);
+
+
+const mapStateToProps = state => {
+    return {
+        userData: state.redux_data
+    }
+}
+
+
+export default withRouter(connect(mapStateToProps)(Edit));

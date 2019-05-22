@@ -1,11 +1,15 @@
 import React from 'react';
 import {Navbar} from 'react-bootstrap';
-const Header=() => {
+import {withRouter} from 'react-router-dom';
+const Header=(props) => {
+    const clicked=()=>{
+        props.history.push('/')
+    }
     return (<>
         <Navbar bg="dark">
-            <Navbar.Brand>Vibrant</Navbar.Brand>
+            <Navbar.Brand onClick={clicked}>Vibrant</Navbar.Brand>
         </Navbar>
     </>)
 
 }
-export  default Header;
+export  default withRouter(Header);
